@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>SPEEDPAINTER</title>
+    <script src="main.js"></script> 
+    <style>
+        html {
+            font-family: Helvetica;
+            font-weight: 100;
+            overflow: hidden;
+            color: #ffffff; 
+            background-color: #584B53;
+        };
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="thin">
+            <h1 class="title">SPEEDPAINTER</h1>
+        </div>
+        <div class="thin">
+            <table class="table">
+                <colgroup>
+                    <col style="width: 100px">
+                    <col style="width: 100px">
+                    <col style="width: 100px">
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <td class="levelNameC"><span id="levelName">Blank</span></td>
+                        <td class="timerC"><span id="timer">00:00:000</span></td>
+                        <td class="difficultyC"><span id="difficulty">Easy</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="middleCont">
+            <div id="leftSide" class="side">
+                <h3>CURRENT BEST TIME</h3>
+                <table class="table">
+                    <colgroup>
+                        <col style="width: 100px">
+                        <col style="width: 100px">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td class="scoresTable"><span id="curBestName"></span></td>
+                            <td class="scoresTable"><span id="curBestTime"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br><br><br><br>
+                <h3>SUBMIT YOUR TIME</h3>
+                <table class="table">
+                    <colgroup>
+                        <col style="width: 100px">
+                        <col style="width: 100px">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td class="scoresTable"><input id="namebox" class="submit1" placeholder="Your username here." type="text"></input></td>
+                            <td class="scoresTable"><button id="insert" class="submit2"> SUBMIT </button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <script type="module">
+                    // Import the functions you need from the SDKs you need
+                    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+                    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics.js";
+                    // TODO: Add SDKs for Firebase products that you want to use
+                    // https://firebase.google.com/docs/web/setup#available-libraries
+
+                    // Your web app's Firebase configuration
+                    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+                    const firebaseConfig = {
+                        apiKey: "AIzaSyA7iWsxAaqIziYR6kfb4WSzS3I4JaYEps4",
+                        authDomain: "paint-game-2cd21.firebaseapp.com",
+                        databaseURL: "https://paint-game-2cd21-default-rtdb.firebaseio.com",
+                        projectId: "paint-game-2cd21",
+                        storageBucket: "paint-game-2cd21.appspot.com",
+                        messagingSenderId: "433344351927",
+                        appId: "1:433344351927:web:64b26d317661613b144732",
+                        measurementId: "G-YZJB6YP8Y6"
+                    };
+
+                    // Initialize Firebase
+                    const app = initializeApp(firebaseConfig);
+                    const analytics = getAnalytics(app);
+
+                    import {getDatabase, ref, get, set, child, update, remove}
+                    from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
+
+                    const db = getDatabase();
+
+                    // References
+                    var namebox = document.getElementById("namebox");
+                    var insertButton = document.getElementById("insert")
+
+                    // Insert data
+                    let levelName = document.getElementById("levelName").textContent
+                    let finalTime = document.getElementById("finalTime").textContent
+                    let curBestTime = document.getElementById("curBestTime").textContent
+
+                    // Function to check if a is less than b in 00:00:000 format
+                    function lessThan(a,b) {
+                        let output = false
+                        a = a.toString()
+                        b = b.toString()
+                        let mina = a.substring(0,2), minb = b.substring(0,2), seca = a.substring(3,5), secb = b.substring(3,5), msa = a.substring(6,9), msb = b.substring(6,9)
+                        return (mina < minb || (mina == minb && (seca < secb || (seca == secb && msa < msb))))
+                    }
+                    function nameCheck(str) { // this works but need to implement into submitter
+                        str.toString()
+                        var code, i, len;
+                        if (str.length > 16) {
+                            return false;
+                        } else {
+                            for (i = 0, len = str.length; i < len; i++) {
+                                code = str.charCodeAt(i);
+                                if (!(code > 47 && code < 58) && !(code > 64 && code < 91) && !(code > 96 && code < 123)) {
+                                    return false;
+                                } 
+                            }
+                            return true;
+                        }
+                    };
+
+                    function InsertData() {
+                        levelName = document.getElementById("levelName").textContent
+                        finalTime = document.getElementById("finalTime").textContent
+                        curBestTime = document.getElementById("curBestTime").textContent
+                        accuracy = document.getElementById("accuracy").textContent
+    
+                        if (lessThan(finalTime,curBestTime) && accuracy==100 && nameCheck(namebox.value)) {
+                            set(ref(db, "scores/"+levelName),{
+                                BestName: namebox.value,
+                                BestTime: finalTime
+                            })
+                            .then(()=>{
+                                alert("Score submitted.")
+                            })
+                            .catch((error)=>{
+                                alert("Error while submitting score.")
+                            })  
+                        } else {
+                            alert("You do not meet the requirements for score submission (1. Username under 16 letters, alphanumeric. 2. Faster time than current record. 3. 100% accuracy)")
+                        }
+                    }
+
+                    // Select data
+                    function SelectData() {
+                        levelName = document.getElementById("levelName").textContent
+                        finalTime = document.getElementById("finalTime").textContent
+                        curBestTime = document.getElementById("curBestTime").textContent
+
+                        const dbref = ref(db);
+
+                        get(child(dbref,"scores/"+levelName)).then((snapshot)=>{
+                            if(snapshot.exists()) {
+                                document.getElementById("curBestName").textContent = snapshot.val().BestName
+                                document.getElementById("curBestTime").textContent = snapshot.val().BestTime
+                            }
+                        })
+
+                    }
+                    setInterval(SelectData,50)
+
+                    // Assigning events
+                    insertButton.addEventListener('click',InsertData);
+                  </script>
+
+
+
+            </div>
+            <div class="grid">
+                <button id="b1" onclick="changeColor('b1')" class="tile"></button>
+                <button id="b2" onclick="changeColor('b2')" class="tile"></button>
+                <button id="b3" onclick="changeColor('b3')" class="tile"></button>
+                <button id="b4" onclick="changeColor('b4')" class="tile"></button>
+                <button id="b5" onclick="changeColor('b5')" class="tile"></button>
+                <button id="b6" onclick="changeColor('b6')" class="tile"></button>
+                <button id="b7" onclick="changeColor('b7')" class="tile"></button>
+                <button id="b8" onclick="changeColor('b8')" class="tile"></button>
+                <button id="b9" onclick="changeColor('b9')" class="tile"></button>
+                <button id="b10" onclick="changeColor('b10')" class="tile"></button>
+                <button id="b11" onclick="changeColor('b11')" class="tile"></button>
+                <button id="b12" onclick="changeColor('b12')" class="tile"></button>
+                <button id="b13" onclick="changeColor('b13')" class="tile"></button>
+                <button id="b14" onclick="changeColor('b14')" class="tile"></button>
+                <button id="b15" onclick="changeColor('b15')" class="tile"></button>
+                <button id="b16" onclick="changeColor('b16')" class="tile"></button>
+                <button id="b17" onclick="changeColor('b17')" class="tile"></button>
+                <button id="b18" onclick="changeColor('b18')" class="tile"></button>
+                <button id="b19" onclick="changeColor('b19')" class="tile"></button>
+                <button id="b20" onclick="changeColor('b20')" class="tile"></button>
+                <button id="b21" onclick="changeColor('b21')" class="tile"></button>
+                <button id="b22" onclick="changeColor('b22')" class="tile"></button>
+                <button id="b23" onclick="changeColor('b23')" class="tile"></button>
+                <button id="b24" onclick="changeColor('b24')" class="tile"></button>
+                <button id="b25" onclick="changeColor('b25')" class="tile"></button>
+                <button id="b26" onclick="changeColor('b26')" class="tile"></button>
+                <button id="b27" onclick="changeColor('b27')" class="tile"></button>
+                <button id="b28" onclick="changeColor('b28')" class="tile"></button>
+                <button id="b29" onclick="changeColor('b29')" class="tile"></button>
+                <button id="b30" onclick="changeColor('b30')" class="tile"></button>
+                <button id="b31" onclick="changeColor('b31')" class="tile"></button>
+                <button id="b32" onclick="changeColor('b32')" class="tile"></button>
+                <button id="b33" onclick="changeColor('b33')" class="tile"></button>
+                <button id="b34" onclick="changeColor('b34')" class="tile"></button>
+                <button id="b35" onclick="changeColor('b35')" class="tile"></button>
+                <button id="b36" onclick="changeColor('b36')" class="tile"></button>
+                <button id="b37" onclick="changeColor('b37')" class="tile"></button>
+                <button id="b38" onclick="changeColor('b38')" class="tile"></button>
+                <button id="b39" onclick="changeColor('b39')" class="tile"></button>
+                <button id="b40" onclick="changeColor('b40')" class="tile"></button>
+                <button id="b41" onclick="changeColor('b41')" class="tile"></button>
+                <button id="b42" onclick="changeColor('b42')" class="tile"></button>
+                <button id="b43" onclick="changeColor('b43')" class="tile"></button>
+                <button id="b44" onclick="changeColor('b44')" class="tile"></button>
+                <button id="b45" onclick="changeColor('b45')" class="tile"></button>
+                <button id="b46" onclick="changeColor('b46')" class="tile"></button>
+                <button id="b47" onclick="changeColor('b47')" class="tile"></button>
+                <button id="b48" onclick="changeColor('b48')" class="tile"></button>
+                <button id="b49" onclick="changeColor('b49')" class="tile"></button>
+            </div>
+            <div id="rightSide" class="side">
+                <p>Accuracy: <span id="accuracy">0</span>%</p>
+                <p>Final Time: <span id="finalTime"></span></p>
+            </div>
+        </div>
+        <div class="thin">
+            <button id="s" onclick="selector(cl.white)" style="background-color:#F1F1F1;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s1" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.gray)" style="background-color:#BABABA;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s2" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.black)" style="background-color:#222222;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s3" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.crimson)" style="background-color:#560C1B;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s4" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.red)" style="background-color:#E50000;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s5" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.orange)" style="background-color:#FFA600;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s6" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.yellow)" style="background-color:#FFE135;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s7" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.lime)" style="background-color:#73f57A;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s8" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.green)" style="background-color:#038253;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s9" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.cyan)" style="background-color:#4dE6f7;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s10" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.blue)" style="background-color:#1005E6;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s11" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.pink)" style="background-color:#EF56FF;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s12" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.purple)" style="background-color:#9C099C;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s13" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.brown)" style="background-color:#7D4D31;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s14" style="color:white;font-weight:bold;"></span></button>
+        </div>
+        <div class="thin">
+            <button class="bb1" onclick="submit()">
+                ✓
+            </button>
+            <button class="bb2" onclick="start()">
+                ▶
+            </button>
+        </div>
+    </div>  
+</body>
+</html>
