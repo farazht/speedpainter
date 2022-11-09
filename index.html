@@ -13,14 +13,14 @@
             font-weight: 100;
             overflow: hidden;
             color: #ffffff; 
-            background-color: #584B53;
+            background-color: #0d1529;
         };
     </style>
 </head>
 <body>
     <div class="all">
-        <div class="thin">
-            <h1 class="title">SPEEDPAINTER</h1>
+        <div class="top">
+            <h1 class="title" style="font-family: Courier New;font-weight: normal;font-size: 40px;">SPEEDPAINTER</h1>
         </div>
         <div class="thin">
             <table class="table">
@@ -40,7 +40,7 @@
         </div>
         <div class="middleCont">
             <div id="leftSide" class="side">
-                <h3>CURRENT BEST TIME</h3>
+                <h3 style="font-weight: 300;line-height:35px">CURRENT BEST TIME</h3>
                 <table class="table">
                     <colgroup>
                         <col style="width: 100px">
@@ -54,7 +54,7 @@
                     </tbody>
                 </table>
                 <br><br><br><br>
-                <h3>SUBMIT YOUR TIME</h3>
+                <h3 style="font-weight: 300;">SUBMIT YOUR TIME</h3>
                 <table class="table">
                     <colgroup>
                         <col style="width: 100px">
@@ -113,7 +113,7 @@
                         let mina = a.substring(0,2), minb = b.substring(0,2), seca = a.substring(3,5), secb = b.substring(3,5), msa = a.substring(6,9), msb = b.substring(6,9)
                         return (mina < minb || (mina == minb && (seca < secb || (seca == secb && msa < msb))))
                     }
-                    function nameCheck(str) { // this works but need to implement into submitter
+                    function nameCheck(str) { 
                         str.toString()
                         var code, i, len;
                         if (str.length > 16) {
@@ -144,10 +144,10 @@
                                 alert("Score submitted.")
                             })
                             .catch((error)=>{
-                                alert("Error while submitting score.")
+                                alert("Error while submitting score to database. Please try again or contact creator if issue persists.")
                             })  
                         } else {
-                            alert("You do not meet the requirements for score submission (1. Username under 16 letters, alphanumeric. 2. Faster time than current record. 3. 100% accuracy)")
+                            alert("You do not meet the requirements for score submission: \n - 1. Username under 16 characters, letters and numbers only.  \n - 2. Faster time than current record. \n - 3. 100% accuracy.")
                         }
                     }
 
@@ -227,26 +227,26 @@
                 <button id="b48" onclick="changeColor('b48')" class="tile"></button>
                 <button id="b49" onclick="changeColor('b49')" class="tile"></button>
             </div>
-            <div id="rightSide" class="side">
+            <div id="rightSide" class="side" style="color: #0d1529">
                 <p>Accuracy: <span id="accuracy">0</span>%</p>
                 <p>Final Time: <span id="finalTime"></span></p>
             </div>
         </div>
         <div class="thin">
-            <button id="s" onclick="selector(cl.white)" style="background-color:#F1F1F1;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s1" style="color:white;font-weight:bold;"></span></button>
-            <button id="s" onclick="selector(cl.gray)" style="background-color:#BABABA;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s2" style="color:white;font-weight:bold;"></span></button>
-            <button id="s" onclick="selector(cl.black)" style="background-color:#222222;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s3" style="color:white;font-weight:bold;"></span></button>
-            <button id="s" onclick="selector(cl.crimson)" style="background-color:#560C1B;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s4" style="color:white;font-weight:bold;"></span></button>
-            <button id="s" onclick="selector(cl.red)" style="background-color:#E50000;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s5" style="color:white;font-weight:bold;"></span></button>
-            <button id="s" onclick="selector(cl.orange)" style="background-color:#FFA600;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s6" style="color:white;font-weight:bold;"></span></button>
-            <button id="s" onclick="selector(cl.yellow)" style="background-color:#FFE135;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s7" style="color:white;font-weight:bold;"></span></button>
-            <button id="s" onclick="selector(cl.lime)" style="background-color:#73f57A;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s8" style="color:white;font-weight:bold;"></span></button>
-            <button id="s" onclick="selector(cl.green)" style="background-color:#038253;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s9" style="color:white;font-weight:bold;"></span></button>
-            <button id="s" onclick="selector(cl.cyan)" style="background-color:#4dE6f7;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s10" style="color:white;font-weight:bold;"></span></button>
-            <button id="s" onclick="selector(cl.blue)" style="background-color:#1005E6;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s11" style="color:white;font-weight:bold;"></span></button>
-            <button id="s" onclick="selector(cl.pink)" style="background-color:#EF56FF;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s12" style="color:white;font-weight:bold;"></span></button>
-            <button id="s" onclick="selector(cl.purple)" style="background-color:#9C099C;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s13" style="color:white;font-weight:bold;"></span></button>
-            <button id="s" onclick="selector(cl.brown)" style="background-color:#7D4D31;border:1px solid#FEF5EF;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s14" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.white)" style="background-color:#F1F1F1;border:1px solid#6c727d;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s1" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.gray)" style="background-color:#BABABA;border:1px solid#6c727d;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s2" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.black)" style="background-color:#222222;border:1px solid#6c727d;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s3" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.crimson)" style="background-color:#560C1B;border:1px solid#6c727d;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s4" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.red)" style="background-color:#E50000;border:1px solid#6c727d;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s5" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.orange)" style="background-color:#FFA600;border:1px solid#6c727d;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s6" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.yellow)" style="background-color:#FFE135;border:1px solid#6c727d;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s7" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.lime)" style="background-color:#73f57A;border:1px solid#6c727d;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s8" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.green)" style="background-color:#038253;border:1px solid#6c727d;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s9" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.cyan)" style="background-color:#4dE6f7;border:1px solid#6c727d;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s10" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.blue)" style="background-color:#1005E6;border:1px solid#6c727d;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s11" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.pink)" style="background-color:#EF56FF;border:1px solid#6c727d;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s12" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.purple)" style="background-color:#9C099C;border:1px solid#6c727d;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s13" style="color:white;font-weight:bold;"></span></button>
+            <button id="s" onclick="selector(cl.brown)" style="background-color:#7D4D31;border:1px solid#6c727d;border-radius: 100%;width: 30px;height: 30px;margin: 3px;"><span id="s14" style="color:white;font-weight:bold;"></span></button>
         </div>
         <div class="thin">
             <button class="bb1" onclick="submit()">
