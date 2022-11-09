@@ -1,3 +1,4 @@
+// go to "!!!" for end of presets
 var cl = {
 	white: "#F1F1F1",
 	gray: "#BABABA",
@@ -24,8 +25,8 @@ var presetLonelyTree = {
     cl.cyan, cl.cyan, cl.cyan, cl.cyan, cl.lime, cl.lime, cl.lime,
     cl.lime, cl.lime, cl.lime, cl.lime, cl.lime, cl.lime, cl.lime],
     levelName: "A Lonely Tree",
-    difficulty: "Medium",
-    difficultyColor: cl.yellow,
+    difficulty: "Hard",
+    difficultyColor: cl.red,
     palette: {
         cyan: 31,
         green: 7,
@@ -33,7 +34,6 @@ var presetLonelyTree = {
         lime: 10,
     }
 }
-
 var presetAbode = {
     template: 
     [cl.cyan, cl.crimson, cl.cyan, cl.cyan, cl.cyan, cl.cyan, cl.cyan,
@@ -44,8 +44,8 @@ var presetAbode = {
     cl.cyan, cl.orange, cl.orange, cl.orange, cl.brown, cl.orange, cl.cyan,
     cl.green, cl.green, cl.green, cl.green, cl.green, cl.green, cl.green],
     levelName: "Abode",
-    difficulty: "Hard",
-    difficultyColor: cl.red,
+    difficulty: "Insane",
+    difficultyColor: cl.purple,
     palette: {
         cyan: 15,
         orange: 10,
@@ -83,8 +83,8 @@ var presetAsphalt = {
     cl.black, cl.white, cl.black, cl.yellow, cl.black, cl.white, cl.black,
     cl.black, cl.white, cl.black, cl.black, cl.black, cl.white, cl.black],
     levelName: "Asphalt",
-    difficulty: "Medium",
-    difficultyColor: cl.yellow,
+    difficulty: "Easy",
+    difficultyColor: cl.lime,
     palette: {
         white: 14,
         yellow: 4,
@@ -277,7 +277,7 @@ var presetFirstAid = {
     cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson],
     levelName: "First Aid",
     difficulty: "Medium",
-    difficultyColor: cl.orange,
+    difficultyColor: cl.yellow,
     palette: {
         white: 5,
         crimson: 7,
@@ -305,6 +305,99 @@ var presetRobot = {
         white: 15,
     }
 }
+//
+var presetPi = {
+    template: 
+    [cl.white, cl.white, cl.white, cl.white, cl.white, cl.white, cl.white,
+    cl.white, cl.black, cl.black, cl.black, cl.black, cl.black, cl.black,
+    cl.black, cl.white, cl.black, cl.white, cl.black, cl.white, cl.white,
+    cl.white, cl.white, cl.black, cl.white, cl.black, cl.white, cl.white,
+    cl.white, cl.white, cl.black, cl.white, cl.black, cl.white, cl.white,
+    cl.white, cl.white, cl.black, cl.white, cl.white, cl.black, cl.white,
+    cl.white, cl.white, cl.white, cl.white, cl.white, cl.white, cl.white],
+    levelName: "Pi",
+    difficulty: "Easy",
+    difficultyColor: cl.lime,
+    palette: {
+        white: 34,
+        black: 15,
+    }
+}
+var presetMagmaCube = {
+    template: 
+    [cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson, 
+    cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson, 
+    cl.crimson, cl.red, cl.red, cl.crimson, cl.red, cl.red, cl.crimson, 
+    cl.crimson, cl.red, cl.yellow, cl.crimson, cl.yellow, cl.red, cl.crimson, 
+    cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson, 
+    cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson, 
+    cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson, cl.crimson],
+    levelName: "Magma Cube",
+    difficulty: "Easy",
+    difficultyColor: cl.lime,
+    palette: {
+        crimson: 41,
+        red: 6,
+        yellow: 2,
+    }
+}
+var presetEqualizer = {
+    template: ['#EF56FF', '#4dE6f7', '#EF56FF', '#4dE6f7', '#EF56FF', '#4dE6f7', '#EF56FF', '#EF56FF', '#F1F1F1', '#EF56FF', '#4dE6f7', '#F1F1F1', '#4dE6f7', '#EF56FF', '#EF56FF', '#F1F1F1', '#F1F1F1', '#4dE6f7', '#F1F1F1', '#F1F1F1', '#EF56FF', '#EF56FF', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#4dE6f7', '#F1F1F1', '#F1F1F1', '#EF56FF', '#F1F1F1', '#F1F1F1', '#EF56FF', '#4dE6f7', '#F1F1F1', '#4dE6f7', '#EF56FF', '#F1F1F1', '#4dE6f7', '#EF56FF', '#4dE6f7', '#EF56FF', '#4dE6f7', '#EF56FF', '#4dE6f7'],
+    levelName: "Equalizer",
+    difficulty: "Insane",
+    difficultyColor: cl.purple,
+    palette: {
+        pink: 16,
+        cyan: 13,
+        white: 20,
+    }
+}
+var presetTheWorld = {
+    template: ['#222222', '#222222', '#1005E6', '#1005E6', '#1005E6', '#222222', '#222222', '#222222', '#73f57A', '#1005E6', '#1005E6', '#73f57A', '#1005E6', '#222222', '#1005E6', '#73f57A', '#73f57A', '#73f57A', '#1005E6', '#1005E6', '#1005E6', '#1005E6', '#FFE135', '#73f57A', '#038253', '#1005E6', '#1005E6', '#1005E6', '#1005E6', '#1005E6', '#1005E6', '#038253', '#1005E6', '#1005E6', '#1005E6', '#222222', '#1005E6', '#1005E6', '#1005E6', '#73f57A', '#038253', '#222222', '#222222', '#222222', '#1005E6', '#1005E6', '#FFE135', '#222222', '#222222'],
+    levelName: "The World",
+    difficulty: "Insane",
+    difficultyColor: cl.purple,
+    palette: {
+        black: 12,
+        blue: 25,
+        yellow: 2,
+        lime: 7,
+        green: 3,
+    }
+}
+var presetTarget = {
+    template: ['#E50000', '#E50000', '#E50000', '#E50000', '#E50000', '#E50000', '#E50000', '#E50000', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#E50000', '#E50000', '#F1F1F1', '#E50000', '#E50000', '#E50000', '#F1F1F1', '#E50000', '#E50000', '#F1F1F1', '#E50000', '#F1F1F1', '#E50000', '#F1F1F1', '#E50000', '#E50000', '#F1F1F1', '#E50000', '#E50000', '#E50000', '#F1F1F1', '#E50000', '#E50000', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#E50000', '#E50000', '#E50000', '#E50000', '#E50000', '#E50000', '#E50000', '#E50000'],
+    levelName: "Target",
+    difficulty: "Easy",
+    difficultyColor: cl.lime,
+    palette: {
+        white: 17,
+        red: 32,
+    }
+}
+var presetLucky = {
+    template: ['#F1F1F1', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#038253', '#038253', '#F1F1F1', '#038253', '#038253', '#F1F1F1', '#F1F1F1', '#038253', '#038253', '#038253', '#038253', '#038253', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#038253', '#038253', '#038253', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#038253', '#038253', '#038253', '#038253', '#038253', '#F1F1F1', '#F1F1F1', '#038253', '#038253', '#73f57A', '#038253', '#038253', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#F1F1F1', '#73f57A', '#F1F1F1', '#F1F1F1', '#F1F1F1'],
+    levelName: "Lucky",
+    difficulty: "Medium",
+    difficultyColor: cl.yellow,
+    palette: {
+        green: 21,
+        lime: 2,
+        white: 26,
+    }
+}
+var presetDucky = {
+    template: ['#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#FFE135', '#FFE135', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#FFE135', '#FFA600', '#FFA600', '#4dE6f7', '#4dE6f7', '#FFE135', '#FFE135', '#FFE135', '#FFE135', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#FFE135', '#FFE135', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7', '#4dE6f7'],
+    levelName: "Ducky",
+    difficulty: "Medium",
+    difficultyColor: cl.yellow,
+    palette: {
+        yellow: 9,
+        orange: 2,
+        cyan: 38,
+    }
+}
+
 var presetBlank = {
     template: 
     [cl.white, cl.white, cl.white, cl.white, cl.white, cl.white, cl.white,
@@ -321,7 +414,6 @@ var presetBlank = {
         white: 49,
     }
 }
-
 let current = [cl.white, cl.white, cl.white, cl.white, cl.white, cl.white, cl.white,
     cl.white, cl.white, cl.white, cl.white, cl.white, cl.white, cl.white,
     cl.white, cl.white, cl.white, cl.white, cl.white, cl.white, cl.white,
@@ -331,7 +423,7 @@ let current = [cl.white, cl.white, cl.white, cl.white, cl.white, cl.white, cl.wh
     cl.white, cl.white, cl.white, cl.white, cl.white, cl.white, cl.white]
 
 
-// !!!
+// END OF PRESETS !!!
 
 // Timer functionality
 let timerPaused = true
@@ -354,16 +446,16 @@ function timer(){
  document.getElementById("timer").innerHTML = `${m}:${s}:${ms}`;
 }
 
-let presets = [presetAbode,presetAsphalt,presetCheckmate,presetCrown,presetHappy,presetLonelyTree,presetLove,presetLuxury,presetMoney,presetSimpleMagic,presetUmbrella,presetRobot,presetFirstAid,presetGhost,presetColorsOfMusic]
+let presets = [presetAbode,presetAsphalt,presetCheckmate,presetCrown,presetHappy,presetLonelyTree,presetLove,presetLuxury,presetMoney,presetSimpleMagic,presetUmbrella,presetRobot,presetFirstAid,presetGhost,presetColorsOfMusic,presetPi,presetMagmaCube]
 let expected = presetBlank.template
 function choosePreset() {
     // Chooses a random preset from the array of presets above
     var rand = Math.random();
-    rand *= 15 // number of presets
+    rand *= 17 // number of presets
     rand = Math.floor(rand);
     temp = presets[rand];
 
-    // Updates expected, along with level name and difficulty in front-end
+    // Updates expected, shows levelName and difficulty
     expected = temp.template;
     levelName = temp.levelName 
     document.getElementById("levelName").innerHTML = temp.levelName;
@@ -448,7 +540,6 @@ let selectedColor = cl.white
 function selector(color) {
     selectedColor = color;
 }
-
 // Changes backgroundColor of given button to selected color, changes color in current at given button's index, updates accuracy
 function changeColor(bn) {
     document.getElementById(bn).style.backgroundColor=selectedColor;
@@ -483,10 +574,11 @@ function updateAcc() {
 }
 
 
-// "Submits" drawing (this is not firebase, just the checkmark). Shows you accuracy and time, stops ability to paint until restarted
+// submit drawing (this is the checkmark, not firebase)
 let finalTime = 0
 let alreadySubmitted = false
 function submit() {
+    // if already submitted, the rest doesnt run
     if (alreadySubmitted == true) {return}
     clearInterval(start)
     updateAcc()
@@ -495,25 +587,26 @@ function submit() {
 
     timerPaused = true;
 
+    //stops timer
     let m = minutes < 10 ? "0" + minutes : minutes;
     let s = seconds < 10 ? "0" + seconds : seconds;
     let ms = milliseconds < 10 ? "00" + milliseconds : milliseconds < 100 ? "0" + milliseconds : milliseconds;
     finalTime = `${m}:${s}:${ms}` 
 
+    //displays final acc and time
     document.getElementById("accuracy").innerHTML = accuracy
     document.getElementById("finalTime").innerHTML = finalTime
     alreadySubmitted = true
 }
 
-// Changes all backgroundColor to white. This does not change the value in "current". So it is only used for
-// the preview sequence where front and back end values don't have to match.
+// changes color of all cells to white
 function allToWhite() {
     for (i = 1; i < 50; i++) {
         cell = "b" + i
         document.getElementById(cell).style.backgroundColor=cl.white;
     }
 } 
-
+// changes value of all cells to white
 function allToWhite2() {
     current = [cl.white, cl.white, cl.white, cl.white, cl.white, cl.white, cl.white,
         cl.white, cl.white, cl.white, cl.white, cl.white, cl.white, cl.white,
@@ -524,12 +617,12 @@ function allToWhite2() {
         cl.white, cl.white, cl.white, cl.white, cl.white, cl.white, cl.white,];
 }
 
-// Resets everything, chooses new preset, shows preview sequence, GO
+// Reset button
 let inCountdown = false;
 function start() {
     alreadySubmitted = false
 
-    document.getElementById("rightSide").style.color = "#584B53";
+    document.getElementById("rightSide").style.color = "#0d1529";
     // RESETS TIMER
     timerPaused = true
     milliseconds = 0
