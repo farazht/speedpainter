@@ -446,12 +446,12 @@ function timer(){
  document.getElementById("timer").innerHTML = `${m}:${s}:${ms}`;
 }
 
-let presets = [presetAbode,presetAsphalt,presetCheckmate,presetCrown,presetHappy,presetLonelyTree,presetLove,presetLuxury,presetMoney,presetSimpleMagic,presetUmbrella,presetRobot,presetFirstAid,presetGhost,presetColorsOfMusic,presetPi,presetMagmaCube]
+let presets = [presetAbode,presetAsphalt,presetCheckmate,presetCrown,presetHappy,presetLonelyTree,presetLove,presetLuxury,presetMoney,presetSimpleMagic,presetUmbrella,presetRobot,presetFirstAid,presetGhost,presetColorsOfMusic,presetPi,presetMagmaCube,presetEqualizer,presetTheWorld,presetTarget,presetLucky,presetDucky]
 let expected = presetBlank.template
 function choosePreset() {
     // Chooses a random preset from the array of presets above
     var rand = Math.random();
-    rand *= 17 // number of presets
+    rand *= 22 // number of presets
     rand = Math.floor(rand);
     temp = presets[rand];
 
