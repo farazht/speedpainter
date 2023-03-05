@@ -423,27 +423,27 @@ let current = [cl.white, cl.white, cl.white, cl.white, cl.white, cl.white, cl.wh
     cl.white, cl.white, cl.white, cl.white, cl.white, cl.white, cl.white]
 
 
-// END OF PRESETS !!!
+// End of presets
 
 // Timer functionality
 let timerPaused = true
 let [milliseconds,seconds,minutes] = [0,0,0]
-function timer(){
+function timer() {
     milliseconds += 10;
-    if(milliseconds == 1000){
+    if (milliseconds == 1000) {
         milliseconds = 0;
         seconds += 1;
-        if(seconds == 60){
+        if (seconds == 60) {
             seconds = 0;
             minutes += 1;
         }
     }
 
- let m = minutes < 10 ? "0" + minutes : minutes;
- let s = seconds < 10 ? "0" + seconds : seconds;
- let ms = milliseconds < 10 ? "00" + milliseconds : milliseconds < 100 ? "0" + milliseconds : milliseconds;
+    let m = minutes < 10 ? "0" + minutes : minutes;
+    let s = seconds < 10 ? "0" + seconds : seconds;
+    let ms = milliseconds < 10 ? "00" + milliseconds : milliseconds < 100 ? "0" + milliseconds : milliseconds;
 
- document.getElementById("timer").innerHTML = `${m}:${s}:${ms}`;
+    document.getElementById("timer").innerHTML = `${m}:${s}:${ms}`;
 }
 
 let presets = [presetAbode,presetAsphalt,presetCheckmate,presetCrown,presetHappy,presetLonelyTree,presetLove,presetLuxury,presetMoney,presetSimpleMagic,presetUmbrella,presetRobot,presetFirstAid,presetGhost,presetColorsOfMusic,presetPi,presetMagmaCube,presetEqualizer,presetTheWorld,presetTarget,presetLucky,presetDucky]
@@ -685,8 +685,3 @@ setInterval(function() {
         timer()
     } 
 }, 10)
-
-
-
-
-
